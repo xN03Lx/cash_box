@@ -3,51 +3,52 @@
     <data>
         <template id="report_voucher_outflow">
             <t t-call="report.html_container">
-                <t t-foreach="docs" t-as="o">
+               
+                <t t-call="report.external_layout">
 
-                    <t t-call="report.external_layout">
+                    <div class="page">
 
-                        <div class="page">
+                        <div class="page-header">
+                               
+                                <h3>Voucher outflow</h3>
+                        </div>
 
-                            <div class="page-header">
-                                <h3>Comprobante de Salida
-                                    <t t-esc="o.id"/>
-                                </h3>
-                            </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <th colspan="4" class="center">Voucher details</th>
 
-                            <table class="table table-condensed">
-                                <thead>
-                                    <th colspan="2" class="center">Datos del comprobante</th>
-                                </thead>
-                                <tbody>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Amount</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="o">
                                     <tr>
-                                        <td>Employee:</td>
                                         <td>
                                             <t t-esc="o.employee.name"/>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount:</td>
+                                   
                                         <td>
                                             <t t-esc="o.amount"/> <span t-field="o.currency_id.symbol" />
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Description:</td>
+                                    
                                         <td>
                                             <t t-esc="o.description"/>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date:</td>
+                                    
                                         <td>
                                             <t t-esc="o.create_date"/>
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>     
                 </t>
             </t>
         </template>
